@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/Prozi/pixi-stats#readme",
   "dependencies": {
-    "pixi.js": "*"
+    "pixi.js": "*",
     "@jacekpietal/gstats": "^0.1.0"
   },
   "devDependencies": {

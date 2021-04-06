@@ -19,23 +19,12 @@
     "importHelpers": true,
     "target": "es2015",
     "module": "es2020",
-    "types": [
-      "jest"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "types": ["jest"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "pixi-js": [
-        "src/app/models/pixi.model.ts"
-      ],
-      "pixi-shim": [
-        "node_modules/pixi.js/index.d.ts"
-      ],
-      "mini-signals": [
-        "node_modules/mini-signals/index.js",
-      ]
+      "pixi-js": ["src/app/models/pixi.model.ts"],
+      "pixi-shim": ["node_modules/pixi.js/index.d.ts"],
+      "mini-signals": ["node_modules/mini-signals/index.js"]
     }
   },
   "angularCompilerOptions": {

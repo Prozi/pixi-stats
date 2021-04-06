@@ -23,7 +23,7 @@ This class provides an info box that will help you monitor your code performance
 
 ### Installation ###
 ```bash
-npm install pixi-stats pixi.js --save
+npm install pixi-stats --save
 ```
 
 ### Usage ###

@@ -30,7 +30,7 @@
     "pixi.js": "*"
   },
   "dependencies": {
-    "gstats": "^0.1.0",
+    "gstats": "https://github.com/Prozi/gstats",
     "pixi.js": "^6.0.2"
   },
   "devDependencies": {

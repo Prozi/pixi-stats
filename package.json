@@ -1,6 +1,6 @@
 {
   "name": "pixi-stats",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "a 2021 version of stats.js + gstats",
   "main": "lib/index.js",
   "types": "./pixi-stats.d.ts",
@@ -30,8 +30,7 @@
     "pixi.js": "*"
   },
   "dependencies": {
-    "gstats": "https://github.com/Prozi/gstats",
-    "pixi.js": "^6.0.2"
+    "@jacekpietal/gstats": "^0.1.0"
   },
   "devDependencies": {
     "prettier": "^2.2.1",

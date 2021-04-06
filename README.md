@@ -38,9 +38,14 @@ const ticker: Ticker = Ticker.shared;
 ticker.add(stats.update, stats, UPDATE_PRIORITY.UTILITY);
 ```
 
-### License ###
+### Contributors ###
 
 The credit goes to:
 - https://github.com/mrdoob/stats.js/ - FPS, MS, MB counters
 - https://github.com/eXponenta/gstatsjs/ - DC, TC counters
 - https://github.com/Prozi/ - exported as typescript library
+
+### License ###
+
+MIT
+

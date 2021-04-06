@@ -38,6 +38,19 @@ const ticker: Ticker = Ticker.shared;
 ticker.add(stats.update, stats, UPDATE_PRIORITY.UTILITY);
 ```
 
+```css
+div#stats {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 500;
+  width: max(200px, 10vw, 10vh);
+  height: max(100px, 6vh, 6vw);
+  opacity: 0.8;
+  user-select: none;
+}
+```
+
 ### Contributors ###
 
 The credit goes to:

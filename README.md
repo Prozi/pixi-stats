@@ -29,7 +29,7 @@ npm install pixi-stats pixi.js --save
 ### Usage ###
 ```typescript
 import { Application, Ticker } from 'pixi.js';
-import { addStats, Stats } from 'pixi-stats/lib/stats';
+import { addStats, Stats } from 'pixi-stats';
 
 const app: Application = new Application({});
 const stats: Stats = addStats(document, app);

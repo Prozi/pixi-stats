@@ -29,7 +29,7 @@
     "pixi.js": "*"
   },
   "dependencies": {
-    "gstatsjs": "git+https://github.com/eXponenta/gstatsjs.git"
+    "gstats": "^0.1.0"
   },
   "devDependencies": {
     "prettier": "^2.2.1",

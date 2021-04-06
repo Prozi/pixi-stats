@@ -1,0 +1,27 @@
+{
+  "name": "pixi-stats",
+  "version": "1.0.0",
+  "description": "a 2021 version of stats.js + gstats",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Prozi/pixi-stats.git"
+  },
+  "keywords": [
+    "stats.js",
+    "gstats",
+    "pixi.js",
+    "webgl",
+    "stats",
+    "fps"
+  ],
+  "author": "Jacek Pietal <prozi85@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Prozi/pixi-stats/issues"
+  },
+  "homepage": "https://github.com/Prozi/pixi-stats#readme"
+}

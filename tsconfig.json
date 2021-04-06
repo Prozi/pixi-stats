@@ -1,36 +1,24 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "allowJs": true,
-    "allowSyntheticDefaultImports": true,
-    "resolveJsonModule": true,
     "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "experimentalDecorators": true,
     "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "module": "es2020",
-    "types": ["jest"],
-    "lib": ["es2018", "dom"],
+    "target": "ES2015",
+    "module": "ES2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./lib",
+    "lib": [
+      "ES2017",
+      "dom"
+    ],
     "paths": {
-      "pixi-js": ["src/app/models/pixi.model.ts"],
-      "pixi-shim": ["node_modules/pixi.js/index.d.ts"],
-      "mini-signals": ["node_modules/mini-signals/index.js"]
+      "mini-signals": [
+        "node_modules/resource-loader/typings/mini-signals.d.ts",
+      ]
     }
   },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+  "include": [
+    "./src"
+  ]
 }

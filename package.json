@@ -4,7 +4,7 @@
   "description": "a 2021 version of stats.js + gstats",
   "main": "lib/stats.ts",
   "scripts": {
-    "test": "jest",
+    "tsc": "tsc -p tsconfig.json",
     "format": "prettier --write lib/*{.ts,.js,.json,.scss,.html}"
   },
   "repository": {
@@ -29,11 +29,13 @@
     "pixi.js": "*"
   },
   "dependencies": {
-    "gstats": "^0.1.0"
+    "gstats": "^0.1.0",
+    "pixi.js": "^6.0.2"
   },
   "devDependencies": {
     "prettier": "^2.2.1",
     "tslint": "^6.1.3",
-    "tslint-config-prettier": "^1.18.0"
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^4.2.3"
   }
 }

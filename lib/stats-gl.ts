@@ -1,4 +1,4 @@
-import BaseHooks from 'gstats/dist/BaseHooks';
+import BaseHooks from 'gstatsjs/src/BaseHooks';
 import { Application, GLTexture, Renderer } from 'pixi-js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';

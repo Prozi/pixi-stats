@@ -1,0 +1,1 @@
+declare module 'gstatsjs/src/BaseHooks';

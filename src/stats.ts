@@ -43,7 +43,7 @@ export class Stats {
     }
   }
 
-  addPanel(panel: Panel) {
+  addPanel(panel: Panel): Panel {
     this.domElement.appendChild(panel.dom);
 
     return panel;

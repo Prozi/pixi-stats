@@ -87,7 +87,7 @@ export class Panel {
     context.fillRect(0, 0, WIDTH, GRAPH_Y);
     context.fillStyle = this.fg;
     context.font = `bold ${FONT_SIZE}px ${getComputedStyle(document.body).fontFamily}`;
-    context.fillText(`${this.averageValue} ${this.name} (${this.min}~${this.max})`, TEXT_X, TEXT_Y);
+    context.fillText(`${this.averageValue} ${this.name} (${this.min}-${this.max})`, TEXT_X, TEXT_Y);
 
     context.drawImage(
       this.dom,

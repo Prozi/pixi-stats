@@ -1,11 +1,11 @@
 {
   "name": "pixi-stats",
-  "version": "1.1.0-beta",
+  "version": "1.1.1",
   "description": "a 2021 version of stats.js + gstats",
   "main": "lib/index.js",
   "types": "./pixi-stats.d.ts",
   "scripts": {
-    "tsc": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
     "format": "prettier --write lib/*{.ts,.js,.json,.scss,.html}"
   },
   "repository": {

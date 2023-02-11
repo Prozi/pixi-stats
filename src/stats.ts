@@ -1,4 +1,4 @@
-import { Application } from 'pixi.js';
+import type { Application } from 'pixi.js';
 import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
 

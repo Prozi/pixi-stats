@@ -1,6 +1,5 @@
 import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
-import type { Application, GLTexture } from 'pixi.js';
-import { Renderer } from 'pixi.js';
+import { Application, GLTexture, Renderer } from 'pixi.js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 
@@ -55,10 +54,12 @@ export class PIXIHooks extends BaseHooks {
       return;
     }
 
-    if (app.renderer instanceof Renderer) {
-      this.attach(app.renderer.gl);
+    const renderer = app.renderer as Renderer;
 
-      const startTextures = app.renderer.texture.managedTextures;
+    if (renderer.gl) {
+      this.attach(renderer.gl);
+
+      const startTextures = renderer.texture.managedTextures;
 
       if (!startTextures || !this.texturehook) {
         console.error('[PIXI Hooks] !startTextures || !this.texturehook');

@@ -1,6 +1,6 @@
 {
   "name": "pixi-stats",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "a 2021 version of stats.js + gstats",
   "main": "lib/index.js",
   "types": "./pixi-stats.d.ts",

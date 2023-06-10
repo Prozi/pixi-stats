@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
-    "moduleResolution": "node",
-    "target": "ES2015",
-    "module": "ES2020",
-    "strict": true,
+    "lib": ["es2017", "dom"],
+    "experimentalDecorators": true,
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "outDir": "./lib",
-    "lib": ["ES2017", "dom"],
-    "paths": {
-      "mini-signals": ["node_modules/resource-loader/typings/mini-signals.d.ts"]
-    }
+    "strict": true,
+    "allowJs": true,
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+    "moduleResolution": "node",
+    "target": "es2015",
+    "module": "none",
+    "outDir": "./dist"
   },
   "include": ["./src"]
 }

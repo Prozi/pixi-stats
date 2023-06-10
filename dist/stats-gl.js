@@ -1,6 +1,12 @@
-import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
-import { Panel } from './stats-panel';
-export class StatsJSAdapter {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.PIXIHooks = exports.StatsJSAdapter = void 0;
+const BaseHooks_1 = __importDefault(require("@jacekpietal/gstats/dist/BaseHooks"));
+const stats_panel_1 = require("./stats-panel");
+class StatsJSAdapter {
     constructor(hook, stats) {
         this.hook = hook;
         if (stats) {
@@ -10,8 +16,8 @@ export class StatsJSAdapter {
             this.stats = new window.Stats();
         }
         if (this.stats) {
-            this.dcPanel = this.stats.addPanel(new Panel('DC', '#f60', '#300'));
-            this.tcPanel = this.stats.addPanel(new Panel('TC', '#0c6', '#033'));
+            this.dcPanel = this.stats.addPanel(new stats_panel_1.Panel('DC', '#f60', '#300'));
+            this.tcPanel = this.stats.addPanel(new stats_panel_1.Panel('TC', '#0c6', '#033'));
             this.stats.showPanel(0);
         }
         else {
@@ -32,7 +38,8 @@ export class StatsJSAdapter {
             this.hook.reset();
     }
 }
-export class PIXIHooks extends BaseHooks {
+exports.StatsJSAdapter = StatsJSAdapter;
+class PIXIHooks extends BaseHooks_1.default {
     constructor(app) {
         super();
         if (!app) {
@@ -64,3 +71,5 @@ export class PIXIHooks extends BaseHooks {
         }
     }
 }
+exports.PIXIHooks = PIXIHooks;
+//# sourceMappingURL=stats-gl.js.map

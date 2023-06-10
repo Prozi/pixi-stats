@@ -1,6 +1,9 @@
-import { PIXIHooks, StatsJSAdapter } from './stats-gl';
-import { Panel } from './stats-panel';
-export class Stats {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.addStats = exports.Stats = void 0;
+const stats_gl_1 = require("./stats-gl");
+const stats_panel_1 = require("./stats-panel");
+class Stats {
     constructor() {
         this.setMode = this.showPanel;
         this.mode = 0;
@@ -52,11 +55,14 @@ export class Stats {
         this.beginTime = this.end();
     }
 }
-Stats.Panel = Panel;
-export function addStats(document, app) {
+exports.Stats = Stats;
+Stats.Panel = stats_panel_1.Panel;
+function addStats(document, app) {
     const stats = new Stats();
-    const pixiHooks = new PIXIHooks(app);
-    const adapter = new StatsJSAdapter(pixiHooks, stats);
+    const pixiHooks = new stats_gl_1.PIXIHooks(app);
+    const adapter = new stats_gl_1.StatsJSAdapter(pixiHooks, stats);
     document.body.appendChild(adapter.stats.domElement);
     return adapter;
 }
+exports.addStats = addStats;
+//# sourceMappingURL=stats.js.map

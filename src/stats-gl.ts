@@ -1,5 +1,5 @@
 import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
-import { Application, GLTexture, Renderer } from 'pixi.js';
+import { Application, GlTexture, Renderer, WebGLRenderer } from 'pixi.js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 
@@ -54,27 +54,27 @@ export class PIXIHooks extends BaseHooks {
       return;
     }
 
-    const renderer = app.renderer as Renderer;
+    const renderer = app.renderer as WebGLRenderer;
 
     if (renderer.gl) {
       this.attach(renderer.gl);
 
-      const startTextures = renderer.texture.managedTextures;
+      // const startTextures = renderer.texture.managedTextures;
+      const glTextures = (renderer.texture as any)._glTextures as Record<string, any>;
 
-      if (!startTextures || !this.texturehook) {
-        console.error('[PIXI Hooks] !startTextures || !this.texturehook');
+      if (!glTextures || !this.texturehook) {
+        console.error('[PIXI Hooks] !glTextures || !this.texturehook');
       } else {
-        console.log('[PIXI Hooks] Collect used textures:', startTextures.length);
+        console.log('[PIXI Hooks] Collect used textures:', glTextures.length);
 
-        for (let i = 0; i < startTextures.length; i++) {
-          const txr = startTextures[i];
-          const gltextures = txr._glTextures;
-          Object.values(gltextures).forEach((glTexture: GLTexture) => {
-            if ((glTexture as any).gl === (app.renderer as Renderer).gl) {
-              this.texturehook!.registerTexture(glTexture.texture);
-            }
-          });
-        }
+        // for (let i = 0; i < startTextures.length; i++) {
+        //   const txr = startTextures[i];
+        Object.values(glTextures).forEach((glTexture) => {
+          if (glTexture.gl === renderer.gl) {
+            this.texturehook!.registerTexture(glTexture.texture);
+          }
+        });
+        // }
       }
     } else {
       console.error('[PIXI Hook] Canvas renderer is not allowed');

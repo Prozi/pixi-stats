@@ -1,7 +1,7 @@
 {
   "name": "pixi-stats",
-  "version": "1.2.2",
-  "description": "a 2023 version of stats.js + gstats",
+  "version": "1.3.0",
+  "description": "a 2024 version of stats.js + gstats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -30,15 +30,15 @@
   },
   "homepage": "https://github.com/Prozi/pixi-stats#readme",
   "dependencies": {
-    "@jacekpietal/gstats": "^0.1.0"
+    "@jacekpietal/gstats": "^0.1.1"
   },
   "peerDependencies": {
-    "pixi.js": "*"
+    "pixi.js": "^8.1.0"
   },
   "devDependencies": {
-    "prettier": "^2.8.8",
+    "prettier": "^3.2.5",
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^5.1.3"
+    "typescript": "^5.4.5"
   }
 }

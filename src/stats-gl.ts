@@ -1,5 +1,5 @@
 import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
-import { Application, GlTexture, Renderer, WebGLRenderer } from 'pixi.js';
+import { Application, WebGLRenderer } from 'pixi.js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 

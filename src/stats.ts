@@ -28,7 +28,7 @@ export class Stats {
 
         this.showPanel(++this.mode % this.domElement.children.length);
       },
-      false
+      false,
     );
 
     this.beginTime = (performance || Date).now();

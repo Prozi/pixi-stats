@@ -98,7 +98,7 @@ export class Panel {
       GRAPH_X,
       GRAPH_Y,
       GRAPH_WIDTH - PR,
-      GRAPH_HEIGHT
+      GRAPH_HEIGHT,
     );
 
     context.fillRect(GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, GRAPH_HEIGHT);
@@ -109,7 +109,7 @@ export class Panel {
       GRAPH_X + GRAPH_WIDTH - PR,
       GRAPH_Y,
       2 * PR,
-      Math.round((1 - value / maxValue) * GRAPH_HEIGHT)
+      Math.round((1 - value / maxValue) * GRAPH_HEIGHT),
     );
   }
 }

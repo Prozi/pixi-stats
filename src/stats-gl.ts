@@ -1,4 +1,4 @@
-import BaseHooks from '@jacekpietal/gstats/dist/BaseHooks';
+import BaseHooks from '@pietal.dev/gstats/dist/BaseHooks';
 import { Application, WebGLRenderer } from 'pixi.js';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';

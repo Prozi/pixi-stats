@@ -62,3 +62,7 @@ The credit goes to:
 
 MIT
 
+### You can buy me a coffee
+
+https://paypal.me/jacekpietal
+

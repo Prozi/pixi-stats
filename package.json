@@ -1,6 +1,6 @@
 {
   "name": "pixi-stats",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "a 2024 version of stats.js + gstats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

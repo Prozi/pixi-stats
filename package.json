@@ -1,6 +1,6 @@
 {
   "name": "pixi-stats",
-  "version": "1.3.5",
+  "version": "1.3.6",
   "description": "a 2024 version of stats.js + gstats",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -10,6 +10,9 @@
     "postbuild": "find dist -name '*.map' -delete",
     "format": "prettier --write src",
     "precommit": "yarn format && yarn build"
+  },
+  "resolutions": {
+    "semver": ">=5.7.2"
   },
   "repository": {
     "type": "git",
@@ -33,7 +36,7 @@
   },
   "homepage": "https://github.com/Prozi/pixi-stats#readme",
   "dependencies": {
-    "@pietal.dev/gstats": "^0.1.3"
+    "@pietal.dev/gstats": "^0.1.4"
   },
   "peerDependencies": {
     "pixi.js": "^8.1.5"

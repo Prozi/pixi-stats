@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.addStats = exports.Stats = void 0;
+exports.Stats = void 0;
+exports.addStats = addStats;
 const stats_gl_1 = require("./stats-gl");
 const stats_panel_1 = require("./stats-panel");
 class Stats {
@@ -64,5 +65,4 @@ function addStats(document, app) {
     document.body.appendChild(adapter.stats.domElement);
     return adapter;
 }
-exports.addStats = addStats;
 //# sourceMappingURL=stats.js.map

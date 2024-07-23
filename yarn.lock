@@ -23,10 +23,10 @@
     chalk "^2.0.0"
     js-tokens "^4.0.0"
 
-"@pietal.dev/gstats@^0.1.5":
-  version "0.1.5"
-  resolved "https://registry.npmjs.org/@pietal.dev/gstats/-/gstats-0.1.5.tgz"
-  integrity sha512-RapUkIhgpf4sUOsDPbQCmeu04cBnlAD7nBKJGWgcyxcsqB2U7JxVNAgGPn0rPhPM6GBEMsKYq1anKfyv8n3oww==
+"@pietal.dev/gstats@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@pietal.dev/gstats/-/gstats-0.1.6.tgz#fe779e5784d54f852b676b4e40c648c94ce03e45"
+  integrity sha512-SJCxaOhXinvRsyt+LtzAsR+u+JzXkc1WeaDnGB4DIZ9kJ3OfEPcY4T7b+3cvyFRdfiWEkOT7T6cVnalLoAdrzQ==
 
 "@pixi/colord@^2.9.6":
   version "2.9.6"

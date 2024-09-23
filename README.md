@@ -56,7 +56,7 @@ The credit goes to:
 
 - https://github.com/mrdoob/stats.js/ - FPS, MS, MB counters
 - https://github.com/eXponenta/gstatsjs/ - DC, TC counters
-- https://github.com/Prozi/ - maintaniner, fixes, updates
+- https://github.com/Prozi/ - maintainer, fixes, updates
 
 ### License
 

@@ -7,7 +7,6 @@ class Stats {
     constructor(document, renderer) {
         this.mode = 0;
         this.frames = 0;
-        this.setMode = this.showPanel;
         this.beginTime = (performance || Date).now();
         this.prevTime = this.beginTime;
         this.domElement = document.createElement('div');
@@ -16,7 +15,6 @@ class Stats {
             event.preventDefault();
             this.showPanel(++this.mode % this.domElement.children.length);
         }, false);
-        document.body.appendChild(this.domElement);
         this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
         this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
         this.fpsPanel = this.addPanel(new stats_panel_1.Panel('FPS', '#3ff', '#002'));
@@ -24,6 +22,8 @@ class Stats {
         if ('memory' in performance) {
             this.memPanel = this.addPanel(new stats_panel_1.Panel('MB', '#f08', '#200'));
         }
+        this.showPanel(0);
+        document.body.appendChild(this.domElement);
     }
     addPanel(panel) {
         this.domElement.appendChild(panel.dom);
@@ -59,5 +59,4 @@ class Stats {
     }
 }
 exports.Stats = Stats;
-Stats.Panel = stats_panel_1.Panel;
 //# sourceMappingURL=stats.js.map

@@ -4,8 +4,6 @@ import { Panel } from './stats-panel';
 import type { WebGLRenderer } from 'pixi.js';
 
 export class Stats {
-  static Panel = Panel;
-
   mode = 0;
   frames = 0;
 
@@ -19,8 +17,6 @@ export class Stats {
   fpsPanel: Panel;
   msPanel: Panel;
   memPanel?: Panel;
-
-  setMode = this.showPanel;
 
   constructor(document: Document, renderer: WebGLRenderer) {
     this.beginTime = (performance || Date).now();
@@ -38,8 +34,6 @@ export class Stats {
       false
     );
 
-    document.body.appendChild(this.domElement);
-
     this.pixiHooks = new PIXIHooks(renderer);
     this.adapter = new StatsJSAdapter(this.pixiHooks, this);
 
@@ -49,6 +43,10 @@ export class Stats {
     if ('memory' in performance) {
       this.memPanel = this.addPanel(new Panel('MB', '#f08', '#200'));
     }
+
+    this.showPanel(0);
+
+    document.body.appendChild(this.domElement);
   }
 
   addPanel(panel: Panel): Panel {

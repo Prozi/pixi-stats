@@ -19,15 +19,9 @@ export class StatsJSAdapter {
     this.hook = hook;
     this.stats = stats;
 
-    if (stats) {
-      this.stats = stats;
-    }
-
     if (this.stats) {
       this.dcPanel = this.stats.addPanel(new Panel('DC', '#f60', '#300'));
       this.tcPanel = this.stats.addPanel(new Panel('TC', '#0c6', '#033'));
-
-      this.stats.showPanel(0);
     } else {
       throw new Error(
         "Stats can't found in window, pass instance of Stats.js as second param"

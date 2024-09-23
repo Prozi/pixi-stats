@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stats = void 0;
 const stats_gl_1 = require("./stats-gl");
 const stats_panel_1 = require("./stats-panel");
+const pixi_js_1 = require("pixi.js");
 class Stats {
     constructor(document, renderer) {
         this.mode = 0;
@@ -15,15 +16,17 @@ class Stats {
             event.preventDefault();
             this.showPanel(++this.mode % this.domElement.children.length);
         }, false);
-        this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
-        this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
         this.fpsPanel = this.addPanel(new stats_panel_1.Panel('FPS', '#3ff', '#002'));
         this.msPanel = this.addPanel(new stats_panel_1.Panel('MS', '#0f0', '#020'));
         if ('memory' in performance) {
             this.memPanel = this.addPanel(new stats_panel_1.Panel('MB', '#f08', '#200'));
         }
+        this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
+        this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
         this.showPanel(0);
         document.body.appendChild(this.domElement);
+        const ticker = pixi_js_1.Ticker.shared || new pixi_js_1.Ticker();
+        ticker.add(this.adapter.update, this.adapter, pixi_js_1.UPDATE_PRIORITY.UTILITY);
     }
     addPanel(panel) {
         this.domElement.appendChild(panel.dom);

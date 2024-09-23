@@ -1,7 +1,7 @@
 import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 
 import { Panel } from './stats-panel';
-import type { WebGLRenderer } from 'pixi.js';
+import { Ticker, UPDATE_PRIORITY, type WebGLRenderer } from 'pixi.js';
 
 export class Stats {
   mode = 0;
@@ -34,9 +34,6 @@ export class Stats {
       false
     );
 
-    this.pixiHooks = new PIXIHooks(renderer);
-    this.adapter = new StatsJSAdapter(this.pixiHooks, this);
-
     this.fpsPanel = this.addPanel(new Panel('FPS', '#3ff', '#002'));
     this.msPanel = this.addPanel(new Panel('MS', '#0f0', '#020'));
 
@@ -44,9 +41,16 @@ export class Stats {
       this.memPanel = this.addPanel(new Panel('MB', '#f08', '#200'));
     }
 
+    this.pixiHooks = new PIXIHooks(renderer);
+    this.adapter = new StatsJSAdapter(this.pixiHooks, this);
+
     this.showPanel(0);
 
     document.body.appendChild(this.domElement);
+
+    const ticker = Ticker.shared || new Ticker();
+
+    ticker.add(this.adapter.update, this.adapter, UPDATE_PRIORITY.UTILITY);
   }
 
   addPanel(panel: Panel): Panel {

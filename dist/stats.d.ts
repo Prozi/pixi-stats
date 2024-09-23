@@ -1,6 +1,6 @@
 import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
-import type { WebGLRenderer } from 'pixi.js';
+import { type WebGLRenderer } from 'pixi.js';
 export declare class Stats {
     mode: number;
     frames: number;

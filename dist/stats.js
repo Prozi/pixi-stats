@@ -1,26 +1,28 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stats = void 0;
-exports.addStats = addStats;
 const stats_gl_1 = require("./stats-gl");
 const stats_panel_1 = require("./stats-panel");
 class Stats {
-    constructor() {
-        this.setMode = this.showPanel;
+    constructor(document, renderer) {
         this.mode = 0;
+        this.frames = 0;
+        this.setMode = this.showPanel;
+        this.beginTime = (performance || Date).now();
+        this.prevTime = this.beginTime;
         this.domElement = document.createElement('div');
         this.domElement.id = 'stats';
         this.domElement.addEventListener('click', (event) => {
             event.preventDefault();
             this.showPanel(++this.mode % this.domElement.children.length);
         }, false);
-        this.beginTime = (performance || Date).now();
-        this.prevTime = this.beginTime;
-        this.frames = 0;
-        this.fpsPanel = this.addPanel(new Stats.Panel('FPS', '#3ff', '#002'));
-        this.msPanel = this.addPanel(new Stats.Panel('MS', '#0f0', '#020'));
-        if (performance && performance.memory) {
-            this.memPanel = this.addPanel(new Stats.Panel('MB', '#f08', '#200'));
+        document.body.appendChild(this.domElement);
+        this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
+        this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
+        this.fpsPanel = this.addPanel(new stats_panel_1.Panel('FPS', '#3ff', '#002'));
+        this.msPanel = this.addPanel(new stats_panel_1.Panel('MS', '#0f0', '#020'));
+        if ('memory' in performance) {
+            this.memPanel = this.addPanel(new stats_panel_1.Panel('MB', '#f08', '#200'));
         }
     }
     addPanel(panel) {
@@ -45,7 +47,7 @@ class Stats {
             this.fpsPanel.update((this.frames * 1000) / (time - this.prevTime), 100);
             this.prevTime = time;
             this.frames = 0;
-            if (this.memPanel) {
+            if (this.memPanel && 'memory' in performance) {
                 const memory = performance.memory;
                 this.memPanel.update(memory.usedJSHeapSize / 1048576, memory.jsHeapSizeLimit / 1048576);
             }
@@ -58,11 +60,4 @@ class Stats {
 }
 exports.Stats = Stats;
 Stats.Panel = stats_panel_1.Panel;
-function addStats(document, app) {
-    const stats = new Stats();
-    const pixiHooks = new stats_gl_1.PIXIHooks(app);
-    const adapter = new stats_gl_1.StatsJSAdapter(pixiHooks, stats);
-    document.body.appendChild(adapter.stats.domElement);
-    return adapter;
-}
 //# sourceMappingURL=stats.js.map

@@ -9,11 +9,9 @@ const stats_panel_1 = require("./stats-panel");
 class StatsJSAdapter {
     constructor(hook, stats) {
         this.hook = hook;
+        this.stats = stats;
         if (stats) {
             this.stats = stats;
-        }
-        else if (window.Stats) {
-            this.stats = new window.Stats();
         }
         if (this.stats) {
             this.dcPanel = this.stats.addPanel(new stats_panel_1.Panel('DC', '#f60', '#300'));
@@ -34,36 +32,32 @@ class StatsJSAdapter {
         }
     }
     reset() {
-        if (this.hook)
+        if (this.hook) {
             this.hook.reset();
+        }
     }
 }
 exports.StatsJSAdapter = StatsJSAdapter;
 class PIXIHooks extends BaseHooks_1.default {
-    constructor(app) {
+    constructor(renderer) {
         super();
-        if (!app) {
-            console.error('[PIXI Hooks] missing PIXI.Application');
+        if (!renderer) {
+            console.error('[PIXI Hooks] missing PIXI.WebGLRenderer');
             return;
         }
-        const renderer = app.renderer;
         if (renderer.gl) {
             this.attach(renderer.gl);
-            // const startTextures = renderer.texture.managedTextures;
-            const glTextures = renderer.texture._glTextures;
+            const { _glTextures: glTextures } = renderer.texture;
             if (!glTextures || !this.texturehook) {
                 console.error('[PIXI Hooks] !glTextures || !this.texturehook');
             }
             else {
                 console.log('[PIXI Hooks] Collect used textures:', glTextures.length);
-                // for (let i = 0; i < startTextures.length; i++) {
-                //   const txr = startTextures[i];
                 Object.values(glTextures).forEach((glTexture) => {
                     if (glTexture.gl === renderer.gl) {
                         this.texturehook.registerTexture(glTexture.texture);
                     }
                 });
-                // }
             }
         }
         else {

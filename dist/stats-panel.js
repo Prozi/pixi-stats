@@ -35,10 +35,13 @@ class Panel {
             .toFixed();
     }
     get max() {
-        return this.values.reduce((max, value) => Math.max(max, value), 0).toFixed();
+        return this.values
+            .reduce((max, value) => Math.max(max, value), 0)
+            .toFixed();
     }
     get averageValue() {
-        return (this.values.reduce((sum, value) => sum + value, 0) / this.values.length).toFixed(1);
+        return (this.values.reduce((sum, value) => sum + value, 0) /
+            this.values.length).toFixed(1);
     }
     pushValue(value) {
         this.values.push(value);

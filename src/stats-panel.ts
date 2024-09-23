@@ -8,7 +8,7 @@ import {
   PR,
   TEXT_X,
   TEXT_Y,
-  WIDTH,
+  WIDTH
 } from './stats-constants';
 
 export class Panel {
@@ -60,12 +60,15 @@ export class Panel {
   }
 
   get max(): string {
-    return this.values.reduce((max: number, value: number) => Math.max(max, value), 0).toFixed();
+    return this.values
+      .reduce((max: number, value: number) => Math.max(max, value), 0)
+      .toFixed();
   }
 
   get averageValue(): string {
     return (
-      this.values.reduce((sum: number, value: number) => sum + value, 0) / this.values.length
+      this.values.reduce((sum: number, value: number) => sum + value, 0) /
+      this.values.length
     ).toFixed(1);
   }
 
@@ -87,7 +90,11 @@ export class Panel {
     context.fillRect(0, 0, WIDTH, GRAPH_Y);
     context.fillStyle = this.fg;
     context.font = `bold ${FONT_SIZE}px ${getComputedStyle(document.body).fontFamily}`;
-    context.fillText(`${this.averageValue} ${this.name} (${this.min}-${this.max})`, TEXT_X, TEXT_Y);
+    context.fillText(
+      `${this.averageValue} ${this.name} (${this.min}-${this.max})`,
+      TEXT_X,
+      TEXT_Y
+    );
 
     context.drawImage(
       this.dom,
@@ -98,7 +105,7 @@ export class Panel {
       GRAPH_X,
       GRAPH_Y,
       GRAPH_WIDTH - PR,
-      GRAPH_HEIGHT,
+      GRAPH_HEIGHT
     );
 
     context.fillRect(GRAPH_X + GRAPH_WIDTH - PR, GRAPH_Y, PR, GRAPH_HEIGHT);
@@ -109,7 +116,7 @@ export class Panel {
       GRAPH_X + GRAPH_WIDTH - PR,
       GRAPH_Y,
       2 * PR,
-      Math.round((1 - value / maxValue) * GRAPH_HEIGHT),
+      Math.round((1 - value / maxValue) * GRAPH_HEIGHT)
     );
   }
 }

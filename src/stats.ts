@@ -18,7 +18,10 @@ export class Stats {
   msPanel: Panel;
   memPanel?: Panel;
 
-  constructor(document: Document, renderer: WebGLRenderer) {
+  constructor(
+    renderer: WebGLRenderer,
+    containerElement: HTMLElement = document.body
+  ) {
     this.beginTime = (performance || Date).now();
     this.prevTime = this.beginTime;
 
@@ -46,7 +49,7 @@ export class Stats {
 
     this.showPanel(0);
 
-    document.body.appendChild(this.domElement);
+    containerElement.appendChild(this.domElement);
 
     const ticker = Ticker.shared || new Ticker();
 

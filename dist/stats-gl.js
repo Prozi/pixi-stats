@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PIXIHooks = exports.StatsJSAdapter = void 0;
-const BaseHooks_1 = __importDefault(require("@pietal.dev/gstats/dist/BaseHooks"));
+const BaseHooks_1 = __importDefault(require("./hooks/BaseHooks"));
 const stats_panel_1 = require("./stats-panel");
 class StatsJSAdapter {
     constructor(hook, stats) {

@@ -31,7 +31,7 @@ import { Application } from 'pixi.js';
 import { Stats } from 'pixi-stats';
 
 const app = new Application();
-const stats = new Stats(document, app.renderer);
+const stats = new Stats(app.renderer);
 ```
 
 ```css

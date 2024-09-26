@@ -12,7 +12,7 @@ export declare class Stats {
     fpsPanel: Panel;
     msPanel: Panel;
     memPanel?: Panel;
-    constructor(document: Document, renderer: WebGLRenderer);
+    constructor(renderer: WebGLRenderer, containerElement?: HTMLElement);
     addPanel(panel: Panel): Panel;
     showPanel(id: number): void;
     begin(): void;

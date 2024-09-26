@@ -5,7 +5,7 @@ const stats_gl_1 = require("./stats-gl");
 const stats_panel_1 = require("./stats-panel");
 const pixi_js_1 = require("pixi.js");
 class Stats {
-    constructor(document, renderer) {
+    constructor(renderer, containerElement = document.body) {
         this.mode = 0;
         this.frames = 0;
         this.beginTime = (performance || Date).now();
@@ -24,7 +24,7 @@ class Stats {
         this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
         this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
         this.showPanel(0);
-        document.body.appendChild(this.domElement);
+        containerElement.appendChild(this.domElement);
         const ticker = pixi_js_1.Ticker.shared || new pixi_js_1.Ticker();
         ticker.add(this.adapter.update, this.adapter, pixi_js_1.UPDATE_PRIORITY.UTILITY);
     }

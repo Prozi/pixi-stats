@@ -1,6 +1,6 @@
 import { Texture, WebGLRenderer } from 'pixi.js';
 
-import BaseHooks from '@pietal.dev/gstats/dist/BaseHooks';
+import BaseHooks from './hooks/BaseHooks';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 

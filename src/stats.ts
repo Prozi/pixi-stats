@@ -1,7 +1,7 @@
-import { PIXIHooks, StatsJSAdapter } from './stats-gl';
+import { PIXIHooks, StatsJSAdapter, WebGLRenderer } from './stats-gl';
 
 import { Panel } from './stats-panel';
-import { Ticker, UPDATE_PRIORITY, type WebGLRenderer } from 'pixi.js';
+import { Ticker, UPDATE_PRIORITY } from 'pixi.js';
 
 export class Stats {
   mode = 0;

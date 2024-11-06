@@ -4,6 +4,8 @@ import BaseHooks from './hooks/BaseHooks';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
 
+export { Texture, WebGLRenderer };
+
 export type PIXIGlTextureSystem = {
   _glTextures: Record<string, { gl: WebGLRenderingContext; texture: Texture }>;
 };

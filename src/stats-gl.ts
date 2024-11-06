@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Texture, WebGLRenderer } from 'pixi.js';
 
 import BaseHooks from './hooks/BaseHooks';
@@ -32,20 +34,22 @@ export class StatsJSAdapter {
   }
 
   update(): void {
-    if (this.stats) {
-      if (this.hook) {
-        this.dcPanel.update(
-          this.hook.deltaDrawCalls,
-          Math.max(50, this.hook.maxDeltaDrawCalls)
-        );
-        this.tcPanel.update(
-          this.hook.texturesCount,
-          Math.max(20, this.hook.maxTextureCount)
-        );
-      }
-
-      this.stats.update();
+    if (!this.stats) {
+      return;
     }
+
+    if (this.hook) {
+      this.dcPanel.update(
+        this.hook.deltaDrawCalls,
+        Math.max(50, this.hook.maxDeltaDrawCalls)
+      );
+      this.tcPanel.update(
+        this.hook.texturesCount,
+        Math.max(20, this.hook.maxTextureCount)
+      );
+    }
+
+    this.stats.update();
   }
 
   reset(): void {
@@ -68,14 +72,18 @@ export class PIXIHooks extends BaseHooks {
     if (renderer.gl) {
       this.attach(renderer.gl);
 
-      const { _glTextures: glTextures } =
-        renderer.texture as unknown as PIXIGlTextureSystem;
+      // pixi v6 compatibility
+      const glTextures = ((renderer.texture as any)._glTextures ||
+        renderer.texture.managedTextures) as unknown as PIXIGlTextureSystem;
 
-      if (!glTextures || !this.texturehook) {
+      // pixi v6 compatibility
+      const glTexturesArray = Array.isArray(glTextures)
+        ? glTextures
+        : Object.values(glTextures);
+
+      if (!glTexturesArray || !this.texturehook) {
         console.error('[PIXI Hooks] !glTextures || !this.texturehook');
       } else {
-        const glTexturesArray = Object.values(glTextures);
-
         console.log(
           '[PIXI Hooks] Collect used textures:',
           glTexturesArray.length

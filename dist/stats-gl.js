@@ -48,8 +48,9 @@ class PIXIHooks extends BaseHooks_1.default {
                 console.error('[PIXI Hooks] !glTextures || !this.texturehook');
             }
             else {
-                console.log('[PIXI Hooks] Collect used textures:', glTextures.length);
-                Object.values(glTextures).forEach((glTexture) => {
+                const glTexturesArray = Object.values(glTextures);
+                console.log('[PIXI Hooks] Collect used textures:', glTexturesArray.length);
+                glTexturesArray.forEach((glTexture) => {
                     if (glTexture.gl === renderer.gl && glTexture.texture) {
                         this.texturehook.registerTexture(glTexture.texture);
                     }

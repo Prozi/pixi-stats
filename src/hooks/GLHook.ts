@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export default class GLHook {
   public drawPasses: number = 0;
 

@@ -9,7 +9,7 @@
     "build": "tsc --build",
     "format": "prettier --write src",
     "lint": "eslint src --fix",
-    "precommit": "yarn lint;yarn format && yarn build",
+    "precommit": "yarn lint;yarn format;yarn build",
     "amend": "yarn precommit && git commit -a --am --no-edit"
   },
   "resolutions": {

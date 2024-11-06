@@ -1,1 +1,1 @@
-{"root":["../src/index.ts","../src/stats-constants.ts","../src/stats-gl.ts","../src/stats-panel.ts","../src/stats.ts","../src/hooks/BaseHooks.ts","../src/hooks/GLHook.ts","../src/hooks/TextureHook.ts"],"version":"5.6.2"}
+{"root":["../src/index.ts","../src/stats-constants.ts","../src/stats-gl.ts","../src/stats-panel.ts","../src/stats.ts","../src/hooks/BaseHooks.ts","../src/hooks/GLHook.ts","../src/hooks/TextureHook.ts"],"version":"5.6.3"}

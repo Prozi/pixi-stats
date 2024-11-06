@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import GLHook from './GLHook';
 import TextureHook from './TextureHook';
 

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 export default class TextureHook {
   public createdTextures: Array<any> = new Array<any>();
 

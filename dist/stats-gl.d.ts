@@ -1,14 +1,18 @@
-import { Texture, WebGLRenderer } from 'pixi.js';
+import { type Texture, type WebGLRenderer } from 'pixi.js';
 import BaseHooks from './hooks/BaseHooks';
 import { Panel } from './stats-panel';
 import { Stats } from './stats';
-export { Texture, WebGLRenderer };
-export type PIXIGlTextureSystem = {
-    _glTextures: Record<string, {
-        gl: WebGLRenderingContext;
-        texture: Texture;
-    }>;
-};
+export { type Texture, type WebGLRenderer };
+export interface PIXIGlTexture {
+    gl: WebGLRenderingContext;
+    texture: Texture;
+}
+export type PIXIGlTextureArray = PIXIGlTexture[];
+export type PIXIGlTextureRecord = Record<string, PIXIGlTexture>;
+export interface PIXIRendererGlTexture {
+    managedTextures?: PIXIGlTextureArray;
+    _glTextures?: PIXIGlTextureRecord;
+}
 export declare class StatsJSAdapter {
     hook: PIXIHooks;
     stats: Stats;

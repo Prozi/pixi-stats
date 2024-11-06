@@ -1,13 +1,9 @@
 "use strict";
-/* eslint-disable @typescript-eslint/no-explicit-any */
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PIXIHooks = exports.StatsJSAdapter = exports.WebGLRenderer = exports.Texture = void 0;
-const pixi_js_1 = require("pixi.js");
-Object.defineProperty(exports, "Texture", { enumerable: true, get: function () { return pixi_js_1.Texture; } });
-Object.defineProperty(exports, "WebGLRenderer", { enumerable: true, get: function () { return pixi_js_1.WebGLRenderer; } });
+exports.PIXIHooks = exports.StatsJSAdapter = void 0;
 const BaseHooks_1 = __importDefault(require("./hooks/BaseHooks"));
 const stats_panel_1 = require("./stats-panel");
 class StatsJSAdapter {
@@ -48,9 +44,9 @@ class PIXIHooks extends BaseHooks_1.default {
         }
         if (renderer.gl) {
             this.attach(renderer.gl);
+            const texture = renderer.texture;
             // pixi v6 compatibility
-            const glTextures = (renderer.texture._glTextures ||
-                renderer.texture.managedTextures);
+            const glTextures = texture._glTextures || texture.managedTextures;
             // pixi v6 compatibility
             const glTexturesArray = Array.isArray(glTextures)
                 ? glTextures

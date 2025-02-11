@@ -50,13 +50,16 @@ npm install pixi-stats --save
 ### Set CSS
 
 ```css
-div#stats {
+#stats {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 1000;
-  width: max(200px, 10vw, 10vh);
-  height: max(100px, 5vh, 5vw);
+}
+
+#stats canvas {
+  width: max(100px, 10vw, 10vh);
+  height: max(60px, 6vh, 6vw);
   user-select: none;
 }
 ```

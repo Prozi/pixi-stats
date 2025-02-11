@@ -14,19 +14,19 @@ export default class TextureHook {
   private gl: any;
 
   constructor(_gl?: any) {
-    if (_gl) {
-      if (_gl.__proto__.createTexture) {
-        this.gl = _gl;
-        this.realGLCreateTexture = _gl.__proto__.createTexture;
-        this.realGLDeleteTexture = _gl.__proto__.deleteTexture;
-        //replace to new function
-        _gl.__proto__.createTexture = this.fakeGLCreateTexture.bind(this);
-        _gl.__proto__.deleteTexture = this.fakeGLDeleteTexture.bind(this);
-        this.isInit = true;
-        console.log('[TextureHook] GL was Hooked!');
-      }
-    } else {
-      console.error("[TextureHook] GL can't be NULL");
+    if (!_gl) {
+      console.warn("[TextureHook] GL can't be NULL");
+    } else if (_gl.__proto__.createTexture) {
+      this.gl = _gl;
+      this.realGLCreateTexture = this.gl.__proto__.createTexture;
+      this.realGLDeleteTexture = this.gl.__proto__.deleteTexture;
+
+      // replace with new function
+      this.gl.__proto__.createTexture = this.fakeGLCreateTexture.bind(this);
+      this.gl.__proto__.deleteTexture = this.fakeGLDeleteTexture.bind(this);
+      this.isInit = true;
+
+      console.info('[TextureHook] GL was Hooked!');
     }
   }
 
@@ -65,8 +65,10 @@ export default class TextureHook {
     if (this.isInit) {
       this.gl.__proto__.createTexture = this.realGLCreateTexture;
       this.gl.__proto__.deleteTexture = this.realGLDeleteTexture;
-      console.log('[TextureHook] Hook was removed!');
+
+      console.info('[TextureHook] Hook was removed!');
     }
+
     this.isInit = false;
   }
 }

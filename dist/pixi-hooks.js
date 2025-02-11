@@ -12,33 +12,35 @@ class PIXIHooks extends BaseHooks_1.default {
     constructor(renderer) {
         super();
         if (!renderer) {
-            console.error('[PIXI Hooks] missing Renderer');
+            console.warn('[PIXI Hooks] renderer in constructor undefined');
             return;
         }
-        if (renderer.gl) {
-            this.attach(renderer.gl);
-            const texture = renderer.texture;
-            // pixi v6 compatibility
-            const glTextures = texture._glTextures || texture.managedTextures;
-            // pixi v6 compatibility
-            const glTexturesArray = Array.isArray(glTextures)
-                ? glTextures
-                : Object.values(glTextures);
-            if (!glTexturesArray || !this.texturehook) {
-                console.error('[PIXI Stats] !glTextures || !this.texturehook');
-            }
-            else {
-                console.log('[PIXI Hooks] Collect used textures:', glTexturesArray.length);
-                glTexturesArray.forEach((glTexture) => {
-                    if (glTexture.gl === renderer.gl && glTexture.texture) {
-                        this.texturehook.registerTexture(glTexture.texture);
-                    }
-                });
-            }
+        if (!renderer.gl) {
+            console.warn('[PIXI Hooks] gl in renderer not found');
+            return;
         }
-        else {
-            console.warn('[PIXI Stats] gl in renderer not hooked');
+        this.attach(renderer.gl);
+        if (!this.texturehook) {
+            console.warn('[PIXI Hooks] attach hook to gl in renderer failed');
+            return;
         }
+        const texture = renderer.texture;
+        // pixi v6 compatibility
+        const glTextures = texture._glTextures || texture.managedTextures;
+        // pixi v6 compatibility
+        const glTexturesArray = Array.isArray(glTextures)
+            ? glTextures
+            : Object.values(glTextures);
+        if (!glTexturesArray) {
+            console.warn('[PIXI Hooks] no gl textures found');
+            return;
+        }
+        console.info('[PIXI Hooks] Collect used textures:', glTexturesArray.length);
+        glTexturesArray.forEach((glTexture) => {
+            if (glTexture.gl === renderer.gl && glTexture.texture) {
+                this.texturehook.registerTexture(glTexture.texture);
+            }
+        });
     }
 }
 exports.PIXIHooks = PIXIHooks;

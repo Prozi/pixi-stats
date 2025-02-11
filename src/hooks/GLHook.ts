@@ -10,17 +10,17 @@ export default class GLHook {
   private gl: any;
 
   constructor(_gl?: any) {
-    if (_gl) {
-      if (_gl.__proto__.drawElements) {
-        this.gl = _gl;
-        this.realGLDrawElements = _gl.__proto__.drawElements;
-        //replace to new function
-        _gl.__proto__.drawElements = this.fakeGLdrawElements.bind(this);
-        this.isInit = true;
-        console.log('[GLHook] GL was Hooked!');
-      }
-    } else {
-      console.error("[GLHook] GL can't be NULL");
+    if (!_gl) {
+      console.warn("[GLHook] GL can't be NULL");
+    } else if (_gl.__proto__.drawElements) {
+      this.gl = _gl;
+      this.realGLDrawElements = this.gl.__proto__.drawElements;
+
+      // replace with new function
+      this.gl.__proto__.drawElements = this.fakeGLdrawElements.bind(this);
+      this.isInit = true;
+
+      console.info('[GLHook] GL was Hooked!');
     }
   }
 
@@ -41,8 +41,10 @@ export default class GLHook {
   public release(): void {
     if (this.isInit) {
       this.gl.__proto__.drawElements = this.realGLDrawElements;
-      console.log('[GLHook] Hook was removed!');
+
+      console.info('[GLHook] Hook was removed!');
     }
+
     this.isInit = false;
   }
 }

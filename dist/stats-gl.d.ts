@@ -1,8 +1,6 @@
-import { type Texture, type WebGLRenderer } from 'pixi.js';
 import BaseHooks from './hooks/BaseHooks';
+import { Renderer, IStats, Texture } from './model';
 import { Panel } from './stats-panel';
-import { Stats } from './stats';
-export { type Texture, type WebGLRenderer };
 export interface PIXIGlTexture {
     gl: WebGLRenderingContext;
     texture: Texture;
@@ -15,14 +13,14 @@ export interface PIXIRendererGlTexture {
 }
 export declare class StatsJSAdapter {
     hook: PIXIHooks;
-    stats: Stats;
+    stats: IStats;
     dcPanel: Panel;
     tcPanel: Panel;
-    constructor(hook: PIXIHooks, stats: Stats);
+    constructor(hook: PIXIHooks, stats: IStats);
     update(): void;
     reset(): void;
 }
 export declare class PIXIHooks extends BaseHooks {
-    constructor(renderer: WebGLRenderer);
+    constructor(renderer: Renderer);
 }
 //# sourceMappingURL=stats-gl.d.ts.map

@@ -1,10 +1,6 @@
-import { type Texture, type WebGLRenderer } from 'pixi.js';
-
 import BaseHooks from './hooks/BaseHooks';
+import { Renderer, IStats, Texture } from './model';
 import { Panel } from './stats-panel';
-import { Stats } from './stats';
-
-export { type Texture, type WebGLRenderer };
 
 export interface PIXIGlTexture {
   gl: WebGLRenderingContext;
@@ -24,12 +20,12 @@ export interface PIXIRendererGlTexture {
 
 export class StatsJSAdapter {
   hook: PIXIHooks;
-  stats: Stats;
+  stats: IStats;
 
   dcPanel: Panel;
   tcPanel: Panel;
 
-  constructor(hook: PIXIHooks, stats: Stats) {
+  constructor(hook: PIXIHooks, stats: IStats) {
     this.hook = hook;
     this.stats = stats;
 
@@ -70,11 +66,11 @@ export class StatsJSAdapter {
 }
 
 export class PIXIHooks extends BaseHooks {
-  constructor(renderer: WebGLRenderer) {
+  constructor(renderer: Renderer) {
     super();
 
     if (!renderer) {
-      console.error('[PIXI Hooks] missing PIXI.WebGLRenderer');
+      console.error('[PIXI Hooks] missing Renderer');
 
       return;
     }
@@ -107,7 +103,7 @@ export class PIXIHooks extends BaseHooks {
         });
       }
     } else {
-      console.error('[PIXI Hook] Canvas renderer is not allowed');
+      console.error('[PIXI Hook] gl in renderer not hooked');
     }
   }
 }

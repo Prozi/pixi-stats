@@ -1,4 +1,5 @@
-import { PIXIHooks, StatsJSAdapter, WebGLRenderer } from './stats-gl';
+import { Renderer } from './model';
+import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
 export declare class Stats {
     mode: number;
@@ -11,7 +12,7 @@ export declare class Stats {
     fpsPanel: Panel;
     msPanel: Panel;
     memPanel?: Panel;
-    constructor(renderer: WebGLRenderer, containerElement?: HTMLElement);
+    constructor(renderer: Renderer, containerElement?: HTMLElement);
     addPanel(panel: Panel): Panel;
     showPanel(id: number): void;
     begin(): void;

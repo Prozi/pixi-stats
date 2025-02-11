@@ -1,7 +1,6 @@
-import { PIXIHooks, StatsJSAdapter, WebGLRenderer } from './stats-gl';
-
+import { Renderer } from './model';
+import { PIXIHooks, StatsJSAdapter } from './stats-gl';
 import { Panel } from './stats-panel';
-import { Ticker, UPDATE_PRIORITY } from 'pixi.js';
 
 export class Stats {
   mode = 0;
@@ -19,7 +18,7 @@ export class Stats {
   memPanel?: Panel;
 
   constructor(
-    renderer: WebGLRenderer,
+    renderer: Renderer,
     containerElement: HTMLElement = document.body
   ) {
     this.beginTime = (performance || Date).now();
@@ -46,14 +45,13 @@ export class Stats {
 
     this.pixiHooks = new PIXIHooks(renderer);
     this.adapter = new StatsJSAdapter(this.pixiHooks, this);
-
     this.showPanel(0);
 
     containerElement.appendChild(this.domElement);
 
-    const ticker = Ticker.shared || new Ticker();
-
-    ticker.add(this.adapter.update, this.adapter, UPDATE_PRIORITY.UTILITY);
+    renderer.animations.push(() => {
+      this.adapter.update();
+    });
   }
 
   addPanel(panel: Panel): Panel {

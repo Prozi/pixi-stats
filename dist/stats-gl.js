@@ -39,7 +39,7 @@ class PIXIHooks extends BaseHooks_1.default {
     constructor(renderer) {
         super();
         if (!renderer) {
-            console.error('[PIXI Hooks] missing PIXI.WebGLRenderer');
+            console.error('[PIXI Hooks] missing Renderer');
             return;
         }
         if (renderer.gl) {
@@ -64,7 +64,7 @@ class PIXIHooks extends BaseHooks_1.default {
             }
         }
         else {
-            console.error('[PIXI Hook] Canvas renderer is not allowed');
+            console.error('[PIXI Hook] gl in renderer not hooked');
         }
     }
 }

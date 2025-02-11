@@ -18,31 +18,42 @@ This class provides an info box that will help you monitor your code performance
 ![mb.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/mb.png)
 ![custom.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/custom.png)
 
+### Usage (pixi.js)
+
+```ts
+import { Application } from 'pixi.js';
+import { Stats } from 'pixi-stats';
+
+const { renderer } = new Application();
+const stats = new Stats(renderer);
+```
+
+### Usage (three.js)
+
+```ts
+import { Renderer } from 'three';
+import { Stats } from 'pixi-stats';
+
+const renderer = new Renderer();
+const stats = new Stats(renderer);
+```
+
 ### Installation
 
 ```bash
 npm install pixi-stats --save
 ```
 
-### Usage
-
-```typescript
-import { Application } from 'pixi.js';
-import { Stats } from 'pixi-stats';
-
-const app = new Application();
-const stats = new Stats(app.renderer);
-```
+### Set CSS
 
 ```css
 div#stats {
   position: fixed;
   top: 0;
-  right: 0;
-  z-index: 500;
+  left: 0;
+  z-index: 1000;
   width: max(200px, 10vw, 10vh);
-  height: max(100px, 6vh, 6vw);
-  opacity: 0.8;
+  height: max(100px, 5vh, 5vw);
   user-select: none;
 }
 ```

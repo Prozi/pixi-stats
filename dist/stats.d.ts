@@ -1,5 +1,6 @@
 import { Renderer } from './model';
-import { PIXIHooks, StatsJSAdapter } from './stats-gl';
+import { PIXIHooks } from './pixi-hooks';
+import { StatsJSAdapter } from './stats-adapter';
 import { Panel } from './stats-panel';
 export declare class Stats {
     mode: number;

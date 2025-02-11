@@ -1,7 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stats = void 0;
-const stats_gl_1 = require("./stats-gl");
+const pixi_hooks_1 = require("./pixi-hooks");
+const stats_adapter_1 = require("./stats-adapter");
 const stats_panel_1 = require("./stats-panel");
 class Stats {
     constructor(renderer, containerElement = document.body) {
@@ -20,13 +21,22 @@ class Stats {
         if ('memory' in performance) {
             this.memPanel = this.addPanel(new stats_panel_1.Panel('MB', '#f08', '#200'));
         }
-        this.pixiHooks = new stats_gl_1.PIXIHooks(renderer);
-        this.adapter = new stats_gl_1.StatsJSAdapter(this.pixiHooks, this);
+        this.pixiHooks = new pixi_hooks_1.PIXIHooks(renderer);
+        this.adapter = new stats_adapter_1.StatsJSAdapter(this.pixiHooks, this);
         this.showPanel(0);
         containerElement.appendChild(this.domElement);
-        renderer.animations.push(() => {
-            this.adapter.update();
-        });
+        if ('animations' in renderer) {
+            renderer.animations.push(() => {
+                this.adapter.update();
+            });
+        }
+        else {
+            const frame = () => {
+                this.adapter.update();
+                requestAnimationFrame(frame);
+            };
+            frame();
+        }
     }
     addPanel(panel) {
         this.domElement.appendChild(panel.dom);

@@ -1,5 +1,6 @@
 import { Renderer } from './model';
-import { PIXIHooks, StatsJSAdapter } from './stats-gl';
+import { PIXIHooks } from './pixi-hooks';
+import { StatsJSAdapter } from './stats-adapter';
 import { Panel } from './stats-panel';
 
 export class Stats {
@@ -49,9 +50,18 @@ export class Stats {
 
     containerElement.appendChild(this.domElement);
 
-    renderer.animations.push(() => {
-      this.adapter.update();
-    });
+    if ('animations' in renderer) {
+      renderer.animations.push(() => {
+        this.adapter.update();
+      });
+    } else {
+      const frame = () => {
+        this.adapter.update();
+        requestAnimationFrame(frame);
+      };
+
+      frame();
+    }
   }
 
   addPanel(panel: Panel): Panel {

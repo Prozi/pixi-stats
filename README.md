@@ -21,6 +21,10 @@ This library provides an info box that will help you monitor your code performan
 ![mb.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/mb.png)
 ![custom.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/custom.png)
 
+### Live demo
+
+https://prozi.github.io/oneforall/demo/?fps
+
 ### Usage (pixi.js)
 
 ```ts

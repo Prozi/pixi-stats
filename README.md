@@ -23,7 +23,13 @@ This library provides an info box that will help you monitor your code performan
 
 ### Live demo
 
+#### pixi.js:
+
 https://prozi.github.io/oneforall/demo/?fps
+
+#### three.js
+
+https://legacyofpain.app/?fps
 
 ### Usage (pixi.js)
 

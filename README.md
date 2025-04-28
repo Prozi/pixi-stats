@@ -21,17 +21,13 @@ This library provides an info box that will help you monitor your code performan
 ![mb.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/mb.png)
 ![custom.png](https://raw.githubusercontent.com/mrdoob/stats.js/master/files/custom.png)
 
-### Live demo
+### pixi.js
 
-#### pixi.js:
+#### Live demo
 
 https://prozi.github.io/oneforall/demo/?fps
 
-#### three.js
-
-https://legacyofpain.app/?fps
-
-### Usage (pixi.js)
+#### Usage
 
 ```ts
 import { Application } from 'pixi.js';
@@ -41,7 +37,13 @@ const { renderer } = new Application();
 const stats = new Stats(renderer);
 ```
 
-### Usage (three.js)
+### three.js
+
+#### Live demo
+
+https://legacyofpain.app/?fps
+
+#### Usage
 
 ```ts
 import { Renderer } from 'three';

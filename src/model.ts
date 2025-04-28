@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type Stub = Record<string, any>;
 
 export type Renderer = Stub;

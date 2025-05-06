@@ -2,10 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Stats = void 0;
 const pixi_hooks_1 = require("./pixi-hooks");
-const stats_adapter_1 = require("./stats-adapter");
 const stats_panel_1 = require("./stats-panel");
+const stats_adapter_1 = require("./stats-adapter");
 class Stats {
-    constructor(renderer, containerElement = document.body) {
+    constructor(renderer, containerElement = document.body, ticker) {
         this.mode = 0;
         this.frames = 0;
         this.beginTime = (performance || Date).now();
@@ -31,11 +31,18 @@ class Stats {
             });
         }
         else {
-            const frame = () => {
-                this.adapter.update();
-                requestAnimationFrame(frame);
-            };
-            frame();
+            if (ticker) {
+                ticker.add(() => {
+                    this.adapter.update();
+                });
+            }
+            else {
+                const frame = () => {
+                    this.adapter.update();
+                    requestAnimationFrame(frame);
+                };
+                frame();
+            }
         }
     }
     addPanel(panel) {

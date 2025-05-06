@@ -37,6 +37,15 @@ const { renderer } = new Application();
 const stats = new Stats(renderer);
 ```
 
+#### Parameters
+
+```ts
+const element = document.querySelector('#your_container');
+const ticker = PIXI.ticker;
+
+new Stats(renderer, element, ticker);
+```
+
 ### three.js
 
 #### Live demo

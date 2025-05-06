@@ -1,7 +1,7 @@
-import { Renderer } from './model';
 import { PIXIHooks } from './pixi-hooks';
-import { StatsJSAdapter } from './stats-adapter';
 import { Panel } from './stats-panel';
+import { Renderer } from './model';
+import { StatsJSAdapter } from './stats-adapter';
 
 export class Stats {
   mode = 0;
@@ -20,7 +20,8 @@ export class Stats {
 
   constructor(
     renderer: Renderer,
-    containerElement: HTMLElement = document.body
+    containerElement: HTMLElement = document.body,
+    ticker?: { add: (fn: () => void) => void }
   ) {
     this.beginTime = (performance || Date).now();
     this.prevTime = this.beginTime;
@@ -55,12 +56,18 @@ export class Stats {
         this.adapter.update();
       });
     } else {
-      const frame = () => {
-        this.adapter.update();
-        requestAnimationFrame(frame);
-      };
+      if (ticker) {
+        ticker.add(() => {
+          this.adapter.update();
+        });
+      } else {
+        const frame = () => {
+          this.adapter.update();
+          requestAnimationFrame(frame);
+        };
 
-      frame();
+        frame();
+      }
     }
   }
 
